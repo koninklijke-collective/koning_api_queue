@@ -1,6 +1,6 @@
 module.tx_koningapiqueue {
     persistence {
-        storagePid = 289
+        storagePid =
     }
     settings {
         process {
