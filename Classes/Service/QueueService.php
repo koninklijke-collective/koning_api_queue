@@ -72,15 +72,14 @@ class QueueService implements \TYPO3\CMS\Core\SingletonInterface
 
     /**
      * @param Request $request
+     * @param array $curlOptions
      * @return Response
      */
-    public function execute(Request $request)
+    public function execute(Request $request, $curlOptions = [])
     {
         $ch = curl_init();
-        $curlOptions = [
-            CURLOPT_URL => $request->getApi()->getLocation() . $request->getLocation(),
-            CURLOPT_RETURNTRANSFER => true
-        ];
+        $curlOptions[CURLOPT_URL] = $request->getApi()->getLocation() . $request->getLocation();
+        $curlOptions[CURLOPT_RETURNTRANSFER] = true;
 
         if (!empty($request->getHeaders())) {
              $curlOptions[CURLOPT_HTTPHEADER] = $request->getHeaders();
