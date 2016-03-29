@@ -2,13 +2,4 @@ module.tx_koningapiqueue {
     persistence {
         storagePid =
     }
-    settings {
-        process {
-            limit = 10
-        }
-        retention {
-            limit = 50
-            period = 604800
-        }
-    }
 }

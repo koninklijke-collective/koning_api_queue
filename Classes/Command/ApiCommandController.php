@@ -1,6 +1,7 @@
 <?php
 namespace Keizer\KoningApiQueue\Command;
 
+use Keizer\KoningApiQueue\Utility\ConfigurationUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
@@ -44,7 +45,7 @@ class ApiCommandController extends \TYPO3\CMS\Extbase\Mvc\Controller\CommandCont
      */
     public function processQueueCommand()
     {
-        $requests = $this->getRequestRepository()->findByLastProcessDateAndLimit('', $this->settings['process']['limit']);
+        $requests = $this->getRequestRepository()->findByLastProcessDateAndLimit('', $this->settings['process.']['limit']);
         if ($requests->count() > 0) {
             $this->outputLine('=> Processing %d requests', [$requests->count()]);
             foreach ($requests as $request) {
@@ -73,10 +74,10 @@ class ApiCommandController extends \TYPO3\CMS\Extbase\Mvc\Controller\CommandCont
     public function dataRetentionCommand()
     {
         $retentionDate = new \DateTime();
-        $retentionInterval = new \DateInterval('PT' . $this->settings['retention']['period'] . 'S');
+        $retentionInterval = new \DateInterval('PT' . $this->settings['retention.']['period'] . 'S');
         $retentionDate->sub($retentionInterval);
 
-        $requests = $this->getRequestRepository()->findRetentionData($retentionDate, $this->settings['retention']['limit']);
+        $requests = $this->getRequestRepository()->findRetentionData($retentionDate, $this->settings['retention.']['limit']);
         if ($requests->count() > 0) {
             $this->outputLine('Removing %d requests', [$requests->count()]);
             foreach ($requests as $request) {
@@ -98,13 +99,11 @@ class ApiCommandController extends \TYPO3\CMS\Extbase\Mvc\Controller\CommandCont
      */
     protected function callCommandMethod()
     {
-        $this->settings = $this->getConfigurationManager()->getConfiguration(
-            \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS,
-            'KoningApiQueue'
-        );
-        if (empty($this->settings)) {
-            throw new \Exception('No settings found for module koning_api_queue');
+        if (!ConfigurationUtility::isValid()) {
+            throw new \Exception('No correct settings found for koning_api_queue extension');
         }
+
+        $this->settings = ConfigurationUtility::getConfiguration();
         parent::callCommandMethod();
     }
 
@@ -147,16 +146,5 @@ class ApiCommandController extends \TYPO3\CMS\Extbase\Mvc\Controller\CommandCont
             $this->queueService = $this->getObjectManager()->get('Keizer\\KoningApiQueue\\Service\\QueueService');
         }
         return $this->queueService;
-    }
-
-    /**
-     * @return \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface
-     */
-    protected function getConfigurationManager()
-    {
-        if ($this->configurationManager === null) {
-            $this->configurationManager = $this->getObjectManager()->get('TYPO3\\CMS\\Extbase\\Configuration\\ConfigurationManager');
-        }
-        return $this->configurationManager;
     }
 }
