@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.0">
+    <file source-language="en" datatype="plaintext" original="messages" date="2016-02-20T19:30:32Z" product-name="koning_api_queue">
+        <header/>
+        <body>
+            <trans-unit id="tx_koningapiqueue_domain_model_api.singular">
+                <source>API</source>
+            </trans-unit>
+            <trans-unit id="tx_koningapiqueue_domain_model_api.plural">
+                <source>API's</source>
+            </trans-unit>
+            <trans-unit id="tx_koningapiqueue_domain_model_api.identifier">
+                <source>Identifier</source>
+            </trans-unit>
+            <trans-unit id="tx_koningapiqueue_domain_model_api.name">
+                <source>Name</source>
+            </trans-unit>
+            <trans-unit id="tx_koningapiqueue_domain_model_api.description">
+                <source>Description</source>
+            </trans-unit>
+            <trans-unit id="tx_koningapiqueue_domain_model_api.location">
+                <source>Location</source>
+            </trans-unit>
+            <trans-unit id="tx_koningapiqueue_domain_model_api.requests">
+                <source>Requests</source>
+            </trans-unit>
+
+            <trans-unit id="tx_koningapiqueue_domain_model_request.singular">
+                <source>API request</source>
+            </trans-unit>
+            <trans-unit id="tx_koningapiqueue_domain_model_request.plural">
+                <source>API requests</source>
+            </trans-unit>
+            <trans-unit id="tx_koningapiqueue_domain_model_request.api">
+                <source>API</source>
+            </trans-unit>
+            <trans-unit id="tx_koningapiqueue_domain_model_request.location">
+                <source>Location</source>
+            </trans-unit>
+            <trans-unit id="tx_koningapiqueue_domain_model_request.method">
+                <source>Method</source>
+            </trans-unit>
+            <trans-unit id="tx_koningapiqueue_domain_model_request.method.I.DELETE">
+                <source>DELETE</source>
+            </trans-unit>
+            <trans-unit id="tx_koningapiqueue_domain_model_request.method.I.GET">
+                <source>GET</source>
+            </trans-unit>
+            <trans-unit id="tx_koningapiqueue_domain_model_request.method.I.PATCH">
+                <source>PATCH</source>
+            </trans-unit>
+            <trans-unit id="tx_koningapiqueue_domain_model_request.method.I.POST">
+                <source>POST</source>
+            </trans-unit>
+            <trans-unit id="tx_koningapiqueue_domain_model_request.method.I.PUT">
+                <source>PUT</source>
+            </trans-unit>
+            <trans-unit id="tx_koningapiqueue_domain_model_request.body">
+                <source>Body</source>
+            </trans-unit>
+            <trans-unit id="tx_koningapiqueue_domain_model_request.headers">
+                <source>Headers</source>
+            </trans-unit>
+            <trans-unit id="tx_koningapiqueue_domain_model_request.last_process_date">
+                <source>Last process date</source>
+            </trans-unit>
+            <trans-unit id="tx_koningapiqueue_domain_model_request.responses">
+                <source>Responses</source>
+            </trans-unit>
+
+            <trans-unit id="tx_koningapiqueue_domain_model_response.singular">
+                <source>API response</source>
+            </trans-unit>
+            <trans-unit id="tx_koningapiqueue_domain_model_response.plural">
+                <source>API responses</source>
+            </trans-unit>
+            <trans-unit id="tx_koningapiqueue_domain_model_response.request">
+                <source>Request</source>
+            </trans-unit>
+            <trans-unit id="tx_koningapiqueue_domain_model_response.processed_date">
+                <source>Processed date</source>
+            </trans-unit>
+            <trans-unit id="tx_koningapiqueue_domain_model_response.status_code">
+                <source>Status code</source>
+            </trans-unit>
+            <trans-unit id="tx_koningapiqueue_domain_model_response.body">
+                <source>Body</source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

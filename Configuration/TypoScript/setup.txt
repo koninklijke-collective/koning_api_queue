@@ -1,0 +1,14 @@
+module.tx_koningapiqueue {
+    persistence {
+        storagePid = {$module.tx_koningapiqueue.persistence.storagePid}
+    }
+    settings {
+        process {
+            limit = {$module.tx_koningapiqueue.settings.process.limit}
+        }
+        retention {
+            limit = {$module.tx_koningapiqueue.settings.retention.limit}
+            period = {$module.tx_koningapiqueue.settings.retention.period}
+        }
+    }
+}
