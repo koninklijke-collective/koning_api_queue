@@ -31,6 +31,7 @@ Add an API record to the ``{$module.tx_koningapiqueue.persistence.storagePid}`` 
 - ``Location``: Base URL of the API (for instance: https://api.instagram.com/v1/) 
 
 **Add the scheduler tasks**
+
 The scheduler tasks are Extbase CommandController Tasks and are called:
 - KoningApiQueue Queue: processQueue
 - KoningApiQueue Queue: dataRetention
@@ -50,24 +51,21 @@ Inject the queue service in your extension (this example assumes you added an AP
 
 Add an API call to the queue:
 
-.. code-block:: php
-
-   $this->apiQueueService->addToQueue(
-       'instagram_api',
-           [
-              'location' => 'oauth/access_token',
-              'method' => 'POST',
-              'body' => [
-                  'client_id' => 'sampleClientId',
-                  'client_secret' => 'sampleClientSecret',
-                  'grant_type' => 'sampleGrantType',
-              ],
-              'headers' => [
-                  'Content-Type: text/json'
-              ]
-          ]
-      );
-
+    $this->apiQueueService->addToQueue(
+        'instagram_api',
+            [
+               'location' => 'oauth/access_token',
+               'method' => 'POST',
+               'body' => [
+                   'client_id' => 'sampleClientId',
+                   'client_secret' => 'sampleClientSecret',
+                   'grant_type' => 'sampleGrantType',
+               ],
+               'headers' => [
+                   'Content-Type: text/json'
+               ]
+           ]
+       );
 
 If you don't want to wait for the queue runner to execute your API call, you can execute it directly by calling: ``addToQueueAndExecute`` instead.
 
