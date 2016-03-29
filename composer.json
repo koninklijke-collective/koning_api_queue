@@ -1,0 +1,36 @@
+{
+  "name": "keizer/koning-api-queue",
+  "description": "TYPO3 Extension: API Queue",
+  "type": "typo3-cms-extension",
+
+  "keywords": [
+    "TYPO3",
+    "CMS",
+    "Koning",
+    "API",
+    "Queue"
+  ],
+  "homepage": "https://github.com/GrandSlamMediaNL/koning_instagram",
+  "license": "LGPL-3.0+",
+
+  "autoload": {
+    "psr-4": {
+      "Keizer\\KoningApiQueue\\": "Classes/"
+    }
+  },
+
+  "version": "1.0.0",
+
+  "authors": [
+    {
+      "name": "Jesper Paardekooper",
+      "email": "j.paardekooper@grandslam-media.nl",
+      "homepage": "https://www.grandslam-media.nl"
+    },
+    {
+      "name": "Benjamin Serfhos",
+      "email": "benjamin@serfhos.com",
+      "homepage": "http://serfhos.com"
+    }
+  ]
+}

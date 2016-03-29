@@ -1,0 +1,5 @@
+module.tx_koningapiqueue {
+    persistence {
+        storagePid = {$module.tx_koningapiqueue.persistence.storagePid}
+    }
+}

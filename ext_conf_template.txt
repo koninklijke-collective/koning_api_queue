@@ -1,0 +1,8 @@
+# cat=basic/enable; type=int; label=Max amount of requests handled per cycle of the queue runner; Normally: 10
+process.limit = 10
+
+# cat=basic/enable; type=int; label=Max amount of requests handled per cycle of the data retention runner; Normally: 50
+retention.limit = 50
+
+# cat=basic/enable; type=int; label=Amount of time (in seconds) to keep completed requests/responses; Normally: 604800 (a week)
+retention.period = 604800
