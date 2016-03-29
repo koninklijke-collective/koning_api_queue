@@ -41,8 +41,6 @@ Usage in code
 =============
 Inject the queue service in your extension (this example assumes you added an API with identifier 'instagram_api':
 
-.. code-block:: php
-
     /**
      * @var \Keizer\KoningApiQueue\Service\QueueService
      * @inject
