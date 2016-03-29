@@ -92,16 +92,16 @@ class QueueService implements \TYPO3\CMS\Core\SingletonInterface
                 break;
             case 'POST':
                 $curlOptions[CURLOPT_POST] = true;
-                curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($request->getBody()));
+                $curlOptions[CURLOPT_POSTFIELDS] = http_build_query($request->getBody());
                 break;
             case 'PUT':
                 $curlOptions[CURLOPT_POST] = true;
-                $curlOptions[CURLOPT_POSTFIELDS] = http_build_query($request->getBody()));
+                $curlOptions[CURLOPT_POSTFIELDS] = http_build_query($request->getBody());
                 $curlOptions[CURLOPT_CUSTOMREQUEST] = 'PUT';
                 break;
             case 'PATCH':
                 $curlOptions[CURLOPT_POST] = true;
-                $curlOptions[CURLOPT_POSTFIELDS] = http_build_query($request->getBody()));
+                $curlOptions[CURLOPT_POSTFIELDS] = http_build_query($request->getBody());
                 $curlOptions[CURLOPT_CUSTOMREQUEST] = 'PATCH';
                 break;
             case 'DELETE':
