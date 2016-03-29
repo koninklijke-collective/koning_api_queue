@@ -77,35 +77,39 @@ class QueueService implements \TYPO3\CMS\Core\SingletonInterface
     public function execute(Request $request)
     {
         $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $request->getApi()->getLocation() . $request->getLocation());
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $curlOptions = [
+            CURLOPT_URL => $request->getApi()->getLocation() . $request->getLocation(),
+            CURLOPT_RETURNTRANSFER => true
+        ];
+
         if (!empty($request->getHeaders())) {
-            curl_setopt($ch, CURLOPT_HTTPHEADER, $request->getHeaders());
+             $curlOptions[CURLOPT_HTTPHEADER] = $request->getHeaders();
         }
 
         switch (strtoupper($request->getMethod())) {
             case 'GET':
-                curl_setopt($ch, CURLOPT_HTTPGET, true);
+                $curlOptions[CURLOPT_HTTPGET] = true;
                 break;
             case 'POST':
-                curl_setopt($ch, CURLOPT_POST, true);
+                $curlOptions[CURLOPT_POST] = true;
                 curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($request->getBody()));
                 break;
             case 'PUT':
-                curl_setopt($ch, CURLOPT_POST, true);
-                curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($request->getBody()));
-                curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PUT');
+                $curlOptions[CURLOPT_POST] = true;
+                $curlOptions[CURLOPT_POSTFIELDS] = http_build_query($request->getBody()));
+                $curlOptions[CURLOPT_CUSTOMREQUEST] = 'PUT';
                 break;
             case 'PATCH':
-                curl_setopt($ch, CURLOPT_POST, true);
-                curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($request->getBody()));
-                curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PATCH');
+                $curlOptions[CURLOPT_POST] = true;
+                $curlOptions[CURLOPT_POSTFIELDS] = http_build_query($request->getBody()));
+                $curlOptions[CURLOPT_CUSTOMREQUEST] = 'PATCH';
                 break;
             case 'DELETE':
-                curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'DELETE');
+                $curlOptions[CURLOPT_CUSTOMREQUEST] = 'DELETE';
                 break;
         }
 
+        curl_setopt_array($ch, $curlOptions);
         $rawResponse = curl_exec($ch);
         $rawInfo = curl_getinfo($ch);
 
@@ -130,7 +134,7 @@ class QueueService implements \TYPO3\CMS\Core\SingletonInterface
      */
     protected function getRequestRepository()
     {
-        if (!isset($this->requestRepository)) {
+        if ($this->requestRepository === null) {
             $this->requestRepository = $this->getObjectManager()->get('Keizer\\KoningApiQueue\\Domain\\Repository\\RequestRepository');
         }
         return $this->requestRepository;
@@ -141,7 +145,7 @@ class QueueService implements \TYPO3\CMS\Core\SingletonInterface
      */
     protected function getApiRepository()
     {
-        if (!isset($this->apiRepository)) {
+        if ($this->apiRepository === null) {
             $this->apiRepository = $this->getObjectManager()->get('Keizer\\KoningApiQueue\\Domain\\Repository\\ApiRepository');
         }
         return $this->apiRepository;

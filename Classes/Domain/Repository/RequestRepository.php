@@ -19,7 +19,7 @@ class RequestRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     }
 
     /**
-     * @param mixed $lastProcessDate
+     * @param \DateTime|string $lastProcessDate
      * @param int $limit
      * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
      */
