@@ -72,14 +72,16 @@ class QueueService implements \TYPO3\CMS\Core\SingletonInterface
 
     /**
      * @param Request $request
-     * @param array $curlOptions
+     * @param array $additionalOptions
      * @return Response
      */
-    public function execute(Request $request, $curlOptions = [])
+    public function execute(Request $request, $additionalOptions = [])
     {
         $ch = curl_init();
-        $curlOptions[CURLOPT_URL] = $request->getApi()->getLocation() . $request->getLocation();
-        $curlOptions[CURLOPT_RETURNTRANSFER] = true;
+        $curlOptions = [
+            CURLOPT_URL => $request->getApi()->getLocation() . $request->getLocation(),
+            CURLOPT_RETURNTRANSFER => true
+        ];
 
         if (!empty($request->getHeaders())) {
              $curlOptions[CURLOPT_HTTPHEADER] = $request->getHeaders();
@@ -108,7 +110,7 @@ class QueueService implements \TYPO3\CMS\Core\SingletonInterface
                 break;
         }
 
-        curl_setopt_array($ch, $curlOptions);
+        curl_setopt_array($ch, $curlOptions + $additionalOptions);
         $rawResponse = curl_exec($ch);
         $statusCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 
