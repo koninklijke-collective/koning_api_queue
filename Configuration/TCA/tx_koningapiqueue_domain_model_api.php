@@ -70,7 +70,7 @@ return array(
                 'type' => 'inline',
                 'foreign_table' => 'tx_koningapiqueue_domain_model_request',
                 'foreign_field' => 'api',
-                'minitems' => 1,
+                'minitems' => 0,
                 'maxitems' => 999,
                 'appearance' => array(
                     'collapse' => 0,
