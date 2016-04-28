@@ -87,7 +87,6 @@ return array(
             'exclude' => 0,
             'label' => 'LLL:EXT:koning_api_queue/Resources/Private/Language/locallang_be.xlf:tx_koningapiqueue_domain_model_request.body',
             'config' => array(
-                'readOnly' => true,
                 'type' => 'text',
                 'rows' => 20
             )
@@ -96,7 +95,6 @@ return array(
             'exclude' => 0,
             'label' => 'LLL:EXT:koning_api_queue/Resources/Private/Language/locallang_be.xlf:tx_koningapiqueue_domain_model_request.headers',
             'config' => array(
-                'readOnly' => true,
                 'type' => 'text',
                 'rows' => 20
             )

@@ -25,6 +25,12 @@ class QueueService implements \TYPO3\CMS\Core\SingletonInterface
     protected $requestRepository;
 
     /**
+     * @var \Keizer\KoningApiQueue\Domain\Repository\ResponseRepository
+     * @inject
+     */
+    protected $responseRepository;
+
+    /**
      * @param string $apiIdentifier
      * @param array $params
      * @return Request
@@ -67,7 +73,12 @@ class QueueService implements \TYPO3\CMS\Core\SingletonInterface
     public function addToQueueAndExecute($apiIdentifier, $params = ['location' => '', 'method' => '', 'body' => [], 'headers' => []])
     {
         $request = $this->addToQueue($apiIdentifier, $params);
-        return $this->execute($request);
+        $response = $this->execute($request);
+        $request->setLastProcessDate($response->getProcessedDate());
+
+        $this->getRequestRepository()->update($request);
+        $this->getResponseRepository()->add($response);
+        return $response;
     }
 
     /**
@@ -139,6 +150,17 @@ class QueueService implements \TYPO3\CMS\Core\SingletonInterface
             $this->requestRepository = $this->getObjectManager()->get('Keizer\\KoningApiQueue\\Domain\\Repository\\RequestRepository');
         }
         return $this->requestRepository;
+    }
+
+    /**
+     * @return \Keizer\KoningApiQueue\Domain\Repository\ResponseRepository
+     */
+    protected function getResponseRepository()
+    {
+        if ($this->responseRepository === null) {
+            $this->responseRepository = $this->getObjectManager()->get('Keizer\\KoningApiQueue\\Domain\\Repository\\ResponseRepository');
+        }
+        return $this->responseRepository;
     }
 
     /**

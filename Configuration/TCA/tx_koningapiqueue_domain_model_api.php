@@ -67,18 +67,7 @@ return array(
             'exclude' => 0,
             'label' => 'LLL:EXT:koning_api_queue/Resources/Private/Language/locallang_be.xlf:tx_koningapiqueue_domain_model_api.requests',
             'config' => array(
-                'type' => 'inline',
-                'foreign_table' => 'tx_koningapiqueue_domain_model_request',
-                'foreign_field' => 'api',
-                'minitems' => 0,
-                'maxitems' => 999,
-                'appearance' => array(
-                    'collapse' => 0,
-                    'levelLinksPosition' => 'top',
-                    'showSynchronizationLink' => 1,
-                    'showPossibleLocalizationRecords' => 1,
-                    'showAllLocalizationLink' => 1
-                ),
+                'type' => 'passthrough',
             ),
         ),
     ),

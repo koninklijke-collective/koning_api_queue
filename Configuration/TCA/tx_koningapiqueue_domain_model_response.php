@@ -64,8 +64,8 @@ return array(
             'exclude' => 0,
             'label' => 'LLL:EXT:koning_api_queue/Resources/Private/Language/locallang_be.xlf:tx_koningapiqueue_domain_model_response.body',
             'config' => array(
-                'readOnly' => true,
-                'type' => 'text'
+                'type' => 'text',
+                'rows' => 20
             )
         ),
     ),
