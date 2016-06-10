@@ -98,22 +98,28 @@ class QueueService implements \TYPO3\CMS\Core\SingletonInterface
              $curlOptions[CURLOPT_HTTPHEADER] = $request->getHeaders();
         }
 
+        if (is_array($request->getBody())) {
+            $postFields = http_build_query($request->getBody());
+        } else {
+            $postFields = $request->getBody();
+        }
+
         switch (strtoupper($request->getMethod())) {
             case 'GET':
                 $curlOptions[CURLOPT_HTTPGET] = true;
                 break;
             case 'POST':
                 $curlOptions[CURLOPT_POST] = true;
-                $curlOptions[CURLOPT_POSTFIELDS] = http_build_query($request->getBody());
+                $curlOptions[CURLOPT_POSTFIELDS] = $postFields;
                 break;
             case 'PUT':
                 $curlOptions[CURLOPT_POST] = true;
-                $curlOptions[CURLOPT_POSTFIELDS] = http_build_query($request->getBody());
+                $curlOptions[CURLOPT_POSTFIELDS] = $postFields;
                 $curlOptions[CURLOPT_CUSTOMREQUEST] = 'PUT';
                 break;
             case 'PATCH':
                 $curlOptions[CURLOPT_POST] = true;
-                $curlOptions[CURLOPT_POSTFIELDS] = http_build_query($request->getBody());
+                $curlOptions[CURLOPT_POSTFIELDS] = $postFields;
                 $curlOptions[CURLOPT_CUSTOMREQUEST] = 'PATCH';
                 break;
             case 'DELETE':
@@ -124,7 +130,6 @@ class QueueService implements \TYPO3\CMS\Core\SingletonInterface
         curl_setopt_array($ch, $curlOptions + $additionalOptions);
         $rawResponse = curl_exec($ch);
         $statusCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-
         $response = new Response();
         $response->setStatusCode($statusCode);
         $response->setBody($rawResponse);
