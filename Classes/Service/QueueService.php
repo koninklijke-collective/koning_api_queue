@@ -94,7 +94,8 @@ class QueueService implements \TYPO3\CMS\Core\SingletonInterface
             CURLOPT_RETURNTRANSFER => true
         ];
 
-        if (!empty($request->getHeaders())) {
+        $headers = $request->getHeaders();
+        if (!empty($headers)) {
              $curlOptions[CURLOPT_HTTPHEADER] = $request->getHeaders();
         }
 
