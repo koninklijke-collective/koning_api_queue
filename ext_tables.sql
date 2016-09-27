@@ -33,7 +33,7 @@ CREATE TABLE tx_koningapiqueue_domain_model_request (
     request int(11) DEFAULT '0' NOT NULL,
     location varchar(225) DEFAULT '',
     method varchar(6) DEFAULT '',
-    body text NOT NULL,
+    body longtext NOT NULL,
     headers text NOT NULL,
     last_process_date int(11) DEFAULT '0' NOT NULL,
     responses int(11) DEFAULT '0' NOT NULL,
@@ -55,7 +55,7 @@ CREATE TABLE tx_koningapiqueue_domain_model_response (
     request int(11) DEFAULT '0' NOT NULL,
     processed_date int(11) DEFAULT '0' NOT NULL,
     status_code int(11) DEFAULT '0' NOT NULL,
-    body text NOT NULL,
+    body longtext NOT NULL,
 
     PRIMARY KEY (uid)
 );
