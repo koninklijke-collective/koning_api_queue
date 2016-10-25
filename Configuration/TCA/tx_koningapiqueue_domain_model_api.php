@@ -6,7 +6,6 @@ if (!defined('TYPO3_MODE')) {
 return array(
     'ctrl' => array(
         'title' => 'LLL:EXT:koning_api_queue/Resources/Private/Language/locallang_be.xlf:tx_koningapiqueue_domain_model_api.singular',
-        'groupName' => 'LLL:EXT:koning_api_queue/Resources/Private/Language/locallang_be.xlf:tx_koningapiqueue_domain_model_api.plural',
         'label' => 'name',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',

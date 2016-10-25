@@ -131,11 +131,16 @@ class QueueService implements \TYPO3\CMS\Core\SingletonInterface
         curl_setopt_array($ch, $curlOptions + $additionalOptions);
         $rawResponse = curl_exec($ch);
         $statusCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
         $response = new Response();
         $response->setStatusCode($statusCode);
         $response->setBody($rawResponse);
         $response->setRequest($request);
         $response->setProcessedDate(new \DateTime());
+
+        $request->setLastProcessDate(new \DateTime());
+        $request->addResponse($response);
+        $this->getRequestRepository()->update($request);
         return $response;
     }
 

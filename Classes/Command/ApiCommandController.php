@@ -57,10 +57,6 @@ class ApiCommandController extends \TYPO3\CMS\Extbase\Mvc\Controller\CommandCont
 
                 $response = $this->getQueueService()->execute($request);
                 $this->outputLine('       - Response code %s', [$response->getStatusCode()]);
-
-                $request->addResponse($response);
-                $request->setLastProcessDate(new \DateTime());
-                $this->getRequestRepository()->update($request);
             }
         } else {
             $this->outputLine('No requests to process');

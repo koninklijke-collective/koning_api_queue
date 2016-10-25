@@ -3,3 +3,9 @@ module.tx_koningapiqueue {
         storagePid =
     }
 }
+
+plugin.tx_koningapiqueue {
+    persistence {
+        storagePid =
+    }
+}

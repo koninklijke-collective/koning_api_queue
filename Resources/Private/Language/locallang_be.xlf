@@ -6,9 +6,6 @@
             <trans-unit id="tx_koningapiqueue_domain_model_api.singular">
                 <source>API</source>
             </trans-unit>
-            <trans-unit id="tx_koningapiqueue_domain_model_api.plural">
-                <source>API's</source>
-            </trans-unit>
             <trans-unit id="tx_koningapiqueue_domain_model_api.identifier">
                 <source>Identifier</source>
             </trans-unit>
@@ -27,9 +24,6 @@
 
             <trans-unit id="tx_koningapiqueue_domain_model_request.singular">
                 <source>API request</source>
-            </trans-unit>
-            <trans-unit id="tx_koningapiqueue_domain_model_request.plural">
-                <source>API requests</source>
             </trans-unit>
             <trans-unit id="tx_koningapiqueue_domain_model_request.api">
                 <source>API</source>
@@ -70,9 +64,6 @@
 
             <trans-unit id="tx_koningapiqueue_domain_model_response.singular">
                 <source>API response</source>
-            </trans-unit>
-            <trans-unit id="tx_koningapiqueue_domain_model_response.plural">
-                <source>API responses</source>
             </trans-unit>
             <trans-unit id="tx_koningapiqueue_domain_model_response.request">
                 <source>Request</source>
