@@ -26,6 +26,7 @@ class RequestRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     public function findByLastProcessDateAndLimit($lastProcessDate, $limit)
     {
         $query = $this->createQuery();
+        $query->getQuerySettings()->setRespectStoragePage(false);
         $constraints = [];
         $constraints[] = $query->equals('lastProcessDate', $lastProcessDate);
         return $query
