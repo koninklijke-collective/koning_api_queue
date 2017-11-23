@@ -43,6 +43,7 @@ class RequestRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     public function findRetentionData(\DateTime $since, $limit)
     {
         $query = $this->createQuery();
+        $query->getQuerySettings()->setRespectStoragePage(false);
         $constraints = [];
         $constraints[] = $query->lessThan('lastProcessDate',$since);
         return $query
